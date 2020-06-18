@@ -1,0 +1,47 @@
+const { default: InputTextField } = require("./input");
+ const { default: TextAreaField } = require("./textArea");
+const { default: DropdownSelect } = require("./val");
+
+const { fields } = this.StaticRange;
+return (
+    <form onSubmit={this.submitForm}>
+        {fields.map(form => {
+            if (form.input_type === "text") {
+                return (
+                    <InputTextField
+                    name={form.name}
+                    placeholder={form.placeholder}
+                    required={form.required}
+                    key={form.placeholder}
+                    _handlechange={this._handlechange}
+                    />
+                );
+            }
+            if (form.input_type === "big_text"){
+                return (
+                    <TextAreaField
+                    name={form.name}
+                    placeholder={form.placeholder}
+                    required={form.required}
+                    key={form.placeholder}
+                    _handleChange={this._handlechange}
+                    />
+                );
+            }
+            if (form.input_type === "dropdown") {
+                return (
+                    <DropdownSelect
+                    name={form.name}
+                    placeholder={form.placeholder}
+                    required={form.required}
+                    val={form.values}
+                    key={form.placeholder}
+                    _handleChange={this._handlechange}
+                    />
+
+                );
+            }
+        })}
+        <input type="submit" />
+    </form>
+)

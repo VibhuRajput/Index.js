@@ -1,0 +1,20 @@
+import React, { Component } from "react";
+//loads all inp, textArea, selectDropdown here
+
+class DynamicForm extends Component {
+    state ={
+        //above image data
+    };
+    submitForm = event => {
+        const { fields, ...inputFields } = this.state;
+        console.log(inputFields);
+        //Do what ever you want to do with data
+        event.preventDefault();
+    };
+
+    _handleChange = event => {
+        this.setState({
+            [event.currentTarget.name]: event.currentTarget.value
+        });
+    };
+}
